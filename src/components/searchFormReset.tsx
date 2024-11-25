@@ -1,5 +1,6 @@
 'use client';
 
+import { X } from 'lucide-react';
 import Link from 'next/link';
 
 type Props = {};
@@ -12,8 +13,11 @@ const SearchFormReset = (props: Props) => {
   };
   return (
     <button type="reset" onClick={reset}>
-      <Link href="/" className="search-btn text-white">
-        X
+      <Link
+        href="/recipes"
+        className="size-[40px] rounded-full bg-amber-500 flex justify-center items-center !important text-white hover:bg-amber-800 transition duration-300"
+      >
+        <X />
       </Link>
     </button>
   );

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { barrio } from './layout';
 import { BookOpenText } from 'lucide-react';
+import RecipesList from '@/components/recipesList';
 export default function Home() {
   return (
     <main>
@@ -26,8 +27,34 @@ export default function Home() {
       </section>
       <section className="flex flex-col px-6 py-4 ">
         <h1 className="text-xl sm:text-3xl font-semibold text-zinc-700">
-          Recent Recipes
+          Italian Recipes
         </h1>
+
+        <RecipesList tag="Italian" limit={3} />
+        <div className="flex justify-center sm:justify-end mt-5">
+          <Link
+            className="hover:bg-amber-600 transition duration-300 text-sm p-2 rounded bg-amber-500 text-white"
+            href={'#'}
+          >
+            See more
+          </Link>
+        </div>
+      </section>
+
+      <section className="flex flex-col px-6 py-4 ">
+        <h1 className="text-xl sm:text-3xl font-semibold text-zinc-700">
+          Asian Recipes
+        </h1>
+
+        <RecipesList tag="Asian" limit={3} />
+        <div className="flex justify-center sm:justify-end mt-5">
+          <Link
+            className="hover:bg-amber-600 transition duration-300 text-sm p-2 rounded bg-amber-500 text-white"
+            href={'#'}
+          >
+            See more
+          </Link>
+        </div>
       </section>
     </main>
   );

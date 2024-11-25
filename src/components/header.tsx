@@ -1,6 +1,5 @@
 'use client';
 
-import { barrio } from '@/app/layout';
 import { useMediaQuery } from '@mui/material';
 import { Menu, SquarePlus, User, X } from 'lucide-react';
 import Image from 'next/image';
@@ -100,9 +99,9 @@ export default function Header() {
       )} */}
 
       <div
-        className={`${
-          mobileMenu ? 'w-[300px] ' : 'w-[0px] '
-        } absolute bg-amber-500 min-h-screen shadow-lg top-0 right-0 transition-all duration-300`}
+        className={`fixed right-0 top-0 z-50 transform ${
+          mobileMenu ? 'translate-x-0' : 'translate-x-full'
+        } bg-amber-500 w-[300px] min-h-screen shadow-lg transition-transform duration-300`}
       >
         {mobileMenu && (
           <div className="p-4 h-screen">
@@ -124,7 +123,7 @@ export default function Header() {
               <nav className="text-center">
                 <ul className="flex flex-col gap-4">
                   {navLinks.map((link) => (
-                    <li className="text-xl " key={link.label}>
+                    <li className="text-2xl " key={link.label}>
                       <Link
                         className={
                           path === link.href
