@@ -1,9 +1,13 @@
-import { RecipeCardProps } from '@/types/types';
+import { Recipe } from '@/types/types';
 import { getDifficultyColor } from '@/utils/utils';
-import { Flame, Heart, Star, Timer, UtensilsCrossed } from 'lucide-react';
+import { CookingPot, Heart, Star, Timer, UtensilsCrossed } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+
+interface RecipeCardProps {
+  recipe: Recipe;
+}
 
 const RecipeCard = ({ recipe }: RecipeCardProps) => {
   return (
@@ -40,7 +44,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
 
           <div className="flex items-center gap-1 justify-between border px-3 py-2.5 w-full">
             <div className="flex gap-1 items-center">
-              <Flame />
+              <CookingPot />
               <p className="font-bold uppercase text-sm">Cooking time </p>
             </div>
             <p className="font-semibold">
@@ -55,18 +59,18 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
               <p className="font-bold uppercase text-sm">Total servings </p>
             </div>
             <p className="font-semibold">
-              {recipe.prepTimeMinutes}
+              {recipe.servings}
               <span className="italic text-sm">pcs</span>
             </p>
           </div>
         </div>
         <div className="flex justify-between items-center py-2">
-          <div className=" flex items-center gap-1">
+          <div className="flex items-center gap-1">
             <p className="font-bold text-gray-600 text-sm">Difficulty:</p>
             <span
-              className={`capitalize font-semibold text-sm px-2 py-1 rounded-sm ${getDifficultyColor(
+              className={`${getDifficultyColor(
                 recipe.difficulty
-              )} `}
+              )} capitalize font-semibold text-sm px-2 py-1 rounded-sm`}
             >
               {recipe.difficulty}
             </span>
@@ -100,7 +104,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
       {/* Action Buttons */}
       <div className=" flex justify-end gap-3">
         <Link
-          href="#"
+          href={`/recipes/${recipe.id}`}
           className="bg-amber-500 text-white px-4 py-2 rounded-md hover:bg-amber-600 transition"
         >
           View Details

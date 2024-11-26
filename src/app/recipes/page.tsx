@@ -1,13 +1,14 @@
 import RecipesList from '@/components/recipesList';
 import SearchForm from '@/components/searchForm';
-import React from 'react';
+import SortSelector from '@/components/sortSelector';
 
 interface Props {
-  searchParams: { query?: string };
+  searchParams: { query?: string; sortBy?: string };
 }
 
 const Page = async ({ searchParams }: Props) => {
-  const { query } = await searchParams;
+  const { query = '', sortBy = 'default' } = await searchParams;
+
   return (
     <main className="px-6 py-3">
       <div className="flex justify-center items-center py-3 pb-6 border-b">
@@ -21,22 +22,14 @@ const Page = async ({ searchParams }: Props) => {
           <h2>Showing all recipes</h2>
         )}
 
-        {/* TO BE DONE */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-2 ">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center sm:gap-2">
           <p>Sort by</p>
-          <select
-            className="px-3 py-1 rounded-md bg-amber-600 text-white shadow"
-            name=""
-            id=""
-            defaultValue="default"
-          >
-            <option value="default">Default</option>
-          </select>
+          <SortSelector />
         </div>
       </div>
 
       <div>
-        <RecipesList query={query} limit={0} />
+        <RecipesList query={query} sortBy={sortBy} />
       </div>
     </main>
   );
