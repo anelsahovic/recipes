@@ -31,25 +31,6 @@ const RecipesList = async ({ query, tag, limit, sortBy }: Props) => {
   }
   console.log(sortBy);
 
-  // Sort the recipes based on the sortBy parameter
-  if (sortBy) {
-    data.recipes.sort((a: Recipe, b: Recipe) => {
-      switch (sortBy) {
-        case 'prepTimeMinutes':
-          return a.prepTimeMinutes - b.prepTimeMinutes; // Sort by preparation time (ascending)
-        case 'cookTimeMinutes':
-          return a.cookTimeMinutes - b.cookTimeMinutes; // Sort by cook time (ascending)
-        case 'servings':
-          return a.servings - b.servings; // Sort by servings (ascending)
-        case 'difficulty':
-          return a.difficulty.localeCompare(b.difficulty); // Sort by difficulty (alphabetical order)
-        case 'cuisine':
-          return a.cuisine.localeCompare(b.cuisine); // Sort by cuisine (alphabetical order)
-        default:
-          return 0; // No sorting if no valid sortBy value
-      }
-    });
-  }
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-4">
       {data.recipes.map((recipe: Recipe) => (

@@ -1,9 +1,10 @@
 import { Recipe } from '@/types/types';
 import { getDifficultyColor } from '@/utils/utils';
-import { CookingPot, Heart, Star, Timer, UtensilsCrossed } from 'lucide-react';
+import { CookingPot, Star, Timer, UtensilsCrossed } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import AddToFavoritesBtn from './addToFavoritesButton';
 
 interface RecipeCardProps {
   recipe: Recipe;
@@ -109,9 +110,7 @@ const RecipeCard = ({ recipe }: RecipeCardProps) => {
         >
           View Details
         </Link>
-        <button className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md  transition duration-300 hover:bg-rose-500 hover:text-amber-50">
-          <Heart />
-        </button>
+        <AddToFavoritesBtn id={recipe.id} text={false} />
       </div>
     </div>
   );

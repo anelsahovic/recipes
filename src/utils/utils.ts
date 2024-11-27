@@ -13,3 +13,26 @@ export const getDifficultyColor = (difficulty: string) => {
       return 'text-gray-500';
   }
 };
+
+export const getStoredRecipeIDs = (): number[] => {
+  const stored = localStorage.getItem('recipeIDs');
+  return stored ? stored.split(',').map(Number) : [];
+};
+
+export const addToFavorites = (id: number) => {
+  const ids = getStoredRecipeIDs();
+  if (!ids.includes(id)) {
+    ids.push(id);
+    localStorage.setItem('recipeIDs', ids.join(','));
+    console.log(`Added recipe ID: ${id}`);
+  } else {
+    console.log(`Recipe ID ${id} is already in favorites.`);
+  }
+};
+
+export const removeFromFavorites = (id: number) => {
+  const ids = getStoredRecipeIDs();
+  const updatedIds = ids.filter((prev) => prev !== id);
+  localStorage.setItem('recipeIDs', updatedIds.join(','));
+  console.log(`Removed recipe ID: ${id}`);
+};

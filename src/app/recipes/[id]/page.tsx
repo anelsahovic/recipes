@@ -1,10 +1,10 @@
+import AddToFavoritesBtn from '@/components/addToFavoritesButton';
 import { Recipe } from '@/types/types';
 import { getDifficultyColor } from '@/utils/utils';
 import {
   CookingPot,
   Eye,
   Flame,
-  Heart,
   Star,
   Timer,
   UtensilsCrossed,
@@ -159,10 +159,7 @@ const Page = async ({ params }: Props) => {
           </ol>
         </div>
         <div className="flex justify-end">
-          <button className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md  transition duration-300 hover:bg-rose-500 hover:text-amber-50 flex gap-1  items-center">
-            <Heart />
-            <p>Add to favorites</p>
-          </button>
+          <AddToFavoritesBtn id={recipe.id} text={true} />
         </div>
       </div>
     </div>
