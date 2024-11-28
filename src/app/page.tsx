@@ -1,8 +1,26 @@
 import Link from 'next/link';
 import { barrio } from './layout';
-import { BookOpenText } from 'lucide-react';
-import RecipesList from '@/components/recipesList';
-export default function Home() {
+import {
+  BookOpenText,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Youtube,
+} from 'lucide-react';
+import RecipeCard from '@/components/recipeCard';
+import Testimonial from '@/components/testimonial';
+export default async function Home() {
+  const response = await fetch('https://dummyjson.com/recipes');
+  const allRecipes = await response.json();
+
+  const id = Math.floor(Math.random() * allRecipes.recipes.length);
+
+  const fetchedFeaturedRecipe = await fetch(
+    `https://dummyjson.com/recipes/${id}`
+  );
+  const featuredRecipe = await fetchedFeaturedRecipe.json();
+
   return (
     <main>
       <section className="  text-white w-full h-[400px] md:h-[500px] bg-amber-500  to-amber-500 flex flex-col justify-center gap-5 items-center text-center pattern">
@@ -25,35 +43,92 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      <section className="flex flex-col px-6 py-4 ">
-        <h1 className="text-xl sm:text-3xl font-semibold text-zinc-700">
-          Italian Recipes
-        </h1>
 
-        <RecipesList tag="Italian" limit={3} />
-        <div className="flex justify-center sm:justify-end mt-5">
-          <Link
-            className="hover:bg-amber-600 transition duration-300 text-sm p-2 rounded bg-amber-500 text-white"
-            href={'#'}
-          >
-            See more
-          </Link>
+      <section className="flex flex-col gap-2 justify-center items-center p-2">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-zinc-800 py-5">
+          Featured Recipe
+        </h1>
+        <RecipeCard recipe={featuredRecipe} />
+      </section>
+
+      <section className="py-12 text-center mx-2">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-zinc-800 mt-2 mb-5">
+          What Our Users Say
+        </h1>
+        <div className="flex flex-col sm:flex-row justify-center gap-10">
+          <Testimonial
+            name="John Doe"
+            text="I found the perfect recipe for my family dinner. Easy to follow
+              and delicious!"
+          />
+          <Testimonial
+            name="Abigail Smith"
+            text="The categories are so helpful. I found exactly what I was
+              craving!"
+          />
         </div>
       </section>
 
-      <section className="flex flex-col px-6 py-4 ">
-        <h1 className="text-xl sm:text-3xl font-semibold text-zinc-700">
-          Asian Recipes
-        </h1>
+      <section className="py-12 text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">
+          Cooking Tips & Tricks
+        </h2>
+        <div className="space-y-4">
+          <p className="text-lg text-gray-700">
+            Learn the art of perfectly cooking rice every time!
+          </p>
+          <p className="text-lg text-gray-700">
+            Master the technique of making a smooth, creamy risotto.
+          </p>
+        </div>
+        <p className="pt-5 uppercase text-sm text-amber-500">
+          Soon on our website
+        </p>
+      </section>
 
-        <RecipesList tag="Asian" limit={3} />
-        <div className="flex justify-center sm:justify-end mt-5">
-          <Link
-            className="hover:bg-amber-600 transition duration-300 text-sm p-2 rounded bg-amber-500 text-white"
-            href={'#'}
-          >
-            See more
-          </Link>
+      <section className="py-12  text-center">
+        <h2 className="text-3xl font-bold text-gray-800 mb-4">Follow Us</h2>
+        <div className="flex gap-2  items-center justify-center">
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://www.instagram.com"
+              className="text-amber-600 hover:text-amber-500"
+            >
+              <Instagram />
+            </a>
+          </div>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://www.instagram.com"
+              className="text-amber-600 hover:text-amber-500"
+            >
+              <Facebook />
+            </a>
+          </div>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://www.instagram.com"
+              className="text-amber-600 hover:text-amber-500"
+            >
+              <Twitter />
+            </a>
+          </div>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://www.instagram.com"
+              className="text-amber-600 hover:text-amber-500"
+            >
+              <Linkedin />
+            </a>
+          </div>
+          <div className="flex justify-center space-x-4">
+            <a
+              href="https://www.instagram.com"
+              className="text-amber-600 hover:text-amber-500"
+            >
+              <Youtube />
+            </a>
+          </div>
         </div>
       </section>
     </main>

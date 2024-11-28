@@ -1,4 +1,4 @@
-import RecipesList from '@/components/recipesList';
+import PaginatedRecipes from '@/components/paginatedRecipes';
 import SearchForm from '@/components/searchForm';
 import SortSelector from '@/components/sortSelector';
 
@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Page = async ({ searchParams }: Props) => {
-  const { query = '', sortBy = 'default' } = await searchParams;
+  const { query = '' } = await searchParams;
 
   return (
     <main className="px-6 py-3">
@@ -29,7 +29,7 @@ const Page = async ({ searchParams }: Props) => {
       </div>
 
       <div>
-        <RecipesList query={query} sortBy={sortBy} />
+        <PaginatedRecipes />
       </div>
     </main>
   );

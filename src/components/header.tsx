@@ -1,7 +1,7 @@
 'use client';
 
 import { useMediaQuery } from '@mui/material';
-import { Menu, SquarePlus, User, X } from 'lucide-react';
+import { Menu, User, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -61,17 +61,10 @@ export default function Header() {
       {!isSmallScreen && (
         <div className="flex gap-4 items-center">
           <Link
-            className="px-2 py-1 ring-1 gap-1 ring-amber-400 text-amber-400 hover:text-amber-600 hover:ring-amber-600 rounded-sm transition duration-300 flex items-center justify-center"
-            href="#"
-          >
-            <User /> Sign in
-          </Link>
-          <Link
             className="px-2 py-1 flex items-center justify-center  bg-amber-600 text-white rounded-sm hover:bg-amber-800 transition duration-300 gap-1"
             href="#"
           >
-            <SquarePlus />
-            New Recipe
+            <User /> Sign in
           </Link>
         </div>
       )}
@@ -146,13 +139,6 @@ export default function Header() {
                   href="#"
                 >
                   <User /> Sign in
-                </Link>
-                <Link
-                  className="px-2 py-1 flex items-center justify-center  bg-amber-600 text-white rounded-sm hover:bg-amber-800 transition duration-300 gap-1"
-                  href="#"
-                >
-                  <SquarePlus />
-                  New Recipe
                 </Link>
               </div>
             </div>
