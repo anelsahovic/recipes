@@ -8,19 +8,10 @@ import {
   Twitter,
   Youtube,
 } from 'lucide-react';
-import RecipeCard from '@/components/recipeCard';
 import Testimonial from '@/components/testimonial';
+import FeaturedRecipe from '@/components/featuredRecipe';
+import { Suspense } from 'react';
 export default async function Home() {
-  const response = await fetch('https://dummyjson.com/recipes');
-  const allRecipes = await response.json();
-
-  const id = Math.floor(Math.random() * allRecipes.recipes.length);
-
-  const fetchedFeaturedRecipe = await fetch(
-    `https://dummyjson.com/recipes/${id}`
-  );
-  const featuredRecipe = await fetchedFeaturedRecipe.json();
-
   return (
     <main>
       <section className="  text-white w-full h-[400px] md:h-[500px] bg-amber-500  to-amber-500 flex flex-col justify-center gap-5 items-center text-center pattern">
@@ -44,11 +35,10 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className="flex flex-col gap-2 justify-center items-center p-2">
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-zinc-800 py-5">
-          Featured Recipe
-        </h1>
-        <RecipeCard recipe={featuredRecipe} />
+      <section className="flex flex-col gap-2 justify-center items-center p-2 text-center">
+        <Suspense fallback="Loading Featured Recipe...">
+          <FeaturedRecipe />
+        </Suspense>
       </section>
 
       <section className="py-12 text-center mx-2">
