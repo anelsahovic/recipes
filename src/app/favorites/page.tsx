@@ -7,9 +7,7 @@ const Page = async () => {
       <h1 className="text-2xl text-zinc-700 font-semibold">
         Your favorite recipes
       </h1>
-      <Suspense fallback="Loading favorite recipes...">
-        <FavoriteRecipes />
-      </Suspense>
+      <FavoriteRecipes />
     </main>
   );
 };

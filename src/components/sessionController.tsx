@@ -32,7 +32,7 @@ async function SessionController() {
             }}
           >
             <button
-              className="px-2 py-1 w-28 flex items-center justify-center text-amber-500 hover:text-amber-700 sm:bg-amber-600 sm:text-white rounded-sm sm:hover:bg-amber-800 transition duration-300 gap-1"
+              className="px-2 py-1 w-28 flex items-center justify-center text-amber-500 hover:text-amber-700 sm:hover:text-white sm:bg-amber-600 sm:text-white rounded-sm sm:hover:bg-amber-800 transition duration-300 gap-1"
               type="submit"
             >
               <User /> <span>Sign in</span>

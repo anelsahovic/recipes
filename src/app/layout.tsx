@@ -6,6 +6,7 @@ import './globals.css';
 import Container from '@/components/container';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import { SessionProvider } from 'next-auth/react';
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -30,11 +31,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.style.fontFamily}  antialiased bg-amber-100`}>
-        <Container>
-          <Header />
-          {children}
-          <Footer />
-        </Container>
+        <SessionProvider>
+          <Container>
+            <Header />
+            {children}
+            <Footer />
+          </Container>
+        </SessionProvider>
       </body>
     </html>
   );
