@@ -2,6 +2,8 @@
 
 A web application to explore, save, and manage recipes, built with **Next.js**, **TypeScript**, and **NextAuth** for authentication. The app supports GitHub OAuth for user authentication and ensures protected routes for logged-in users.
 
+![Recipes Homepage](/recipes_screenshot.webp)
+
 ## Features ✨
 
 - 🥗 Browse a collection of recipes.
