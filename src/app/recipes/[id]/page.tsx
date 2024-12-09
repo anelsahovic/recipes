@@ -13,9 +13,7 @@ import Image from 'next/image';
 import React from 'react';
 
 interface Props {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
 const Page = async ({ params }: Props) => {

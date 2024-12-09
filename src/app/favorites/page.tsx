@@ -1,5 +1,4 @@
 import FavoriteRecipes from '@/components/favoriteRecipes';
-import { Suspense } from 'react';
 
 const Page = async () => {
   return (

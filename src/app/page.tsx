@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { barrio } from './layout';
 import {
   BookOpenText,
   Facebook,
@@ -11,6 +10,7 @@ import {
 import Testimonial from '@/components/testimonial';
 import FeaturedRecipe from '@/components/featuredRecipe';
 import { Suspense } from 'react';
+import { barrio } from './fonts/fonts';
 export default async function Home() {
   return (
     <main>

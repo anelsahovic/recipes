@@ -3,7 +3,7 @@ import SearchForm from '@/components/searchForm';
 import SortSelector from '@/components/sortSelector';
 
 interface Props {
-  searchParams: { query?: string; sortBy?: string };
+  searchParams: Promise<{ query?: string; sortBy?: string }>;
 }
 
 const Page = async ({ searchParams }: Props) => {

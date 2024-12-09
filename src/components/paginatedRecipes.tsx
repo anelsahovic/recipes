@@ -1,14 +1,13 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import Pagination from './pagination';
 import RecipesList from './recipesList';
 import { Recipe } from '@/types/types';
 
 const PaginatedRecipes = () => {
   const searchParams = useSearchParams();
-  const router = useRouter();
 
   const currentPage = Number(searchParams.get('page')) || 1;
   const sortBy = searchParams.get('sortBy') || 'default'; // Get the sortBy value from query params
@@ -48,6 +47,7 @@ const PaginatedRecipes = () => {
 
   useEffect(() => {
     fetchRecipes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage, sortBy, query]); // Refetch whenever page, sortBy, or query changes
 
   return (
